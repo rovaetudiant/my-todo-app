@@ -54,8 +54,28 @@
   margin-bottom: 10px;
 }
 
+.todo-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
 .todo-text {
   word-break: break-all;
+  font-size: 16px;
+}
+
+
+.todo-text.barre {
+  text-decoration: line-through;
+  color: #888; 
 }
 
 .btn-supprimer {
@@ -69,4 +89,14 @@
 
 .btn-supprimer:hover {
   background-color: #bd2130;
+}
+
+
+.todo-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
 }
