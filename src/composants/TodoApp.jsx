@@ -5,38 +5,37 @@ function TodoApp() {
   const [taches, setTaches] = useState([]);
   const [texteSaisi, setTexteSaisi] = useState('');
 
-  // 1. Fampiasana rehefa manampy asa vaovao
+  
   const handleAjouter = () => {
     if (texteSaisi.trim() !== '') {
-      // Ovaina ho Objet misy "id" sy "estFaite: false" ilay asa vaovao
+      
       const nouvelleTache = {
-        id: Date.now(), // Mba hahatonga ny id tsy hitovy mihitsy
+        id: Date.now(), 
         texte: texteSaisi,
-        estFaite: false // False satria mbola tsy vita rehefa ampidirina vao voalohany
+        estFaite: false 
       };
       setTaches([...taches, nouvelleTache]); 
       setTexteSaisi(''); 
     }
   };
 
-  // 2. Fampiasana rehefa manindry ilay carré (Checkbox)
+ 
   const handleToggleTache = (idTache) => {
     const tachesModifiees = taches.map(tache => {
       if (tache.id === idTache) {
-        return { ...tache, estFaite: !tache.estFaite }; // Avadika ny sandany (true/false)
+        return { ...tache, estFaite: !tache.estFaite }; 
       }
       return tache;
     });
     setTaches(tachesModifiees);
   };
 
-  // 3. Fampiasana rehefa mamafa asa
   const handleSupprimer = (idTache) => {
     const nouvellesTaches = taches.filter(tache => tache.id !== idTache);
     setTaches(nouvellesTaches);
   };
 
-  // Hikajiana ny isan'ny asa mbola tsy vita
+  
   const tachesRestantes = taches.filter(tache => !tache.estFaite).length;
 
   return (
@@ -60,14 +59,14 @@ function TodoApp() {
         {taches.map((tache) => (
           <li key={tache.id} className="todo-item">
             <div className="todo-item-left">
-              {/* Ilay carré (Checkbox) */}
+             
               <input 
                 type="checkbox" 
                 checked={tache.estFaite}
                 onChange={() => handleToggleTache(tache.id)}
                 className="todo-checkbox"
               />
-              {/* Ny soratra: asiana class "barre" raha toa ka true ny estFaite */}
+             
               <span className={`todo-text ${tache.estFaite ? 'barre' : ''}`}>
                 {tache.texte}
               </span>
@@ -79,10 +78,11 @@ function TodoApp() {
               Supprimer
             </button>
           </li>
+
         ))}
       </ul>
 
-      {/* Ilay fampisehoana ny isan'ny asa eo ambany */}
+
       <div className="todo-footer">
         {taches.length === 0 ? (
           <p>Aucune tâche pour le moment.</p>
